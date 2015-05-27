@@ -2,10 +2,15 @@
 
 <head>
 <style>
-div {
+div.tile {
     width: 10px;
     height: 10px;
-    background-color: #333;
+    background-color: #ccc;
+    border: solid 1px red;
+    float: left;
+}
+div.row {
+    clear: both;
 }
 </style>
 </head>
@@ -18,9 +23,13 @@ div {
 
 var board = document.getElementById('board');
 for (var i = 0; i<10; i++){
+    var row = document.createElement('div');
+    row.classList.add('row');
+    board.appendChild(row);
     for (var j = 0; j<10; j++){
-        var div = document.createElement('div');
-        board.appendChild(div);
+        var tile = document.createElement('div');
+        tile.classList.add('tile');
+        row.appendChild(tile);
         console.log('create tile');
     }
 }
