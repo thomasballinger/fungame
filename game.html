@@ -5,12 +5,14 @@
 div.tile {
     width: 10px;
     height: 10px;
-    background-color: #ccc;
     border: solid 1px red;
     float: left;
 }
 div.row {
     clear: both;
+}
+div.snake {
+  background-color: #333;
 }
 </style>
 </head>
@@ -24,11 +26,13 @@ div.row {
 onload = init();
 
 function init(){
-	draw();
+  var s = newSnake()
+	draw(s);
 }
 
-function draw(){
+function draw(points){
 	var board = document.getElementById('board');
+  board.innerHTML = ''; // clears out elements from last render
 	for (var i = 0; i<10; i++){
 	    var row = document.createElement('div');
 	    row.classList.add('row');
@@ -37,19 +41,31 @@ function draw(){
 	        var tile = document.createElement('div');
 	        tile.classList.add('tile');
 	        row.appendChild(tile);
+          if (containsPoint(points, {x: j, y: i})){
+            tile.classList.add('snake');
+          }
 	        console.log('create tile');
 	    }
 	}
 }
 
-<!-- Make a new snake... maybe? -->
-function new_snake(){
-var length = 5;
-snake = [];
-for (var i = 0; i < length; i++){
-snake.push({x:i, y:0});
+function containsPoint(points, point){
+  for (var i=0; i<points.length; i++){
+    if (point.x === points[i].x && point.y === points[i].y){
+      return true;
+    }
+  }
+  return false;
 }
 
+// Make a new snake... maybe?
+function newSnake(){
+  var length = 5;
+  snake = [];
+  for (var i = 0; i < length; i++){
+    snake.push({x:i, y:0});
+  }
+  return snake;
 }
 </script>
 </body>
