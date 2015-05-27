@@ -5,9 +5,11 @@
 
 <script>
 
-document.getElementById('board');
+var board = document.getElementById('board');
 for (var i = 0; i<10; i++){
     for (var j = 0; j<10; j++){
+        var div = document.createElement('div');
+        board.appendChild(div);
         console.log('create tile');
     }
 }
