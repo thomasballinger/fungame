@@ -1,0 +1,12 @@
+
+div.tile {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border: solid 1px red;
+    float: left;
+}
+div.row {
+    clear: both;
+}
+
